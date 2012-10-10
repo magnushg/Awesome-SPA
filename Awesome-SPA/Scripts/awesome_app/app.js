@@ -1,6 +1,6 @@
 ﻿define(['jquery',
         'knockout',
-        'awsome_app/viewModel',
+        'awesome_app/viewModel',
         'bootstrap',
         'blackbird',
         'domReady!'], function ($, ko, applicationViewModel) {

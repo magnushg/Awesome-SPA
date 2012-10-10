@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Awsome_SPA
+namespace Awesome_SPA.App_Start
 {
     public class BundleConfig
     {

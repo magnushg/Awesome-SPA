@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Awsome_SPA.Controllers
+namespace Awesome_SPA.Controllers
 {
     public class ValuesController : ApiController
     {

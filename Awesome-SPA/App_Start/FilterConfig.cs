@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Awsome_SPA
+namespace Awesome_SPA.App_Start
 {
     public class FilterConfig
     {

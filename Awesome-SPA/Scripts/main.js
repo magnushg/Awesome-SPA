@@ -10,6 +10,6 @@
     }
 });
 
-require(['awsome_app/app'], function (app) {
+require(['awesome_app/app'], function (app) {
     app.run();
 });

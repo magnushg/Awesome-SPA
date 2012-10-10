@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awsome-SPA", "Awsome-SPA\Awsome-SPA.csproj", "{0F23A5B3-CECE-45CE-8D9A-AA970D4AC88C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awesome-SPA", "Awesome-SPA\Awesome-SPA.csproj", "{0F23A5B3-CECE-45CE-8D9A-AA970D4AC88C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
