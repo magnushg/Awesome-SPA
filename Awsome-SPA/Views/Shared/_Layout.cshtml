@@ -6,8 +6,6 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap-responsive.css")" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,7 +16,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Awsome SPA</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Username</a>
@@ -33,9 +31,6 @@
       </div>
     </div>
     @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-    @RenderSection("scripts", required: false)
+    <script data-main="Scripts/main" src="@Url.Content("~/Scripts/require.min.js")"></script>
 </body>
 </html>
