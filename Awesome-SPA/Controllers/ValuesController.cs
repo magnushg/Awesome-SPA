@@ -5,28 +5,29 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Awesome_SPA.Services;
+using Awsome_SPA.Models;
 
 namespace Awesome_SPA.Controllers
 {
     public class ValuesController : ApiController
     {
-        private readonly IFoo _foo;
+        private readonly IInstagramService _instagramService;
 
-        public ValuesController(IFoo foo)
+        public ValuesController(IInstagramService instagramService)
         {
-            _foo = foo;
+            _instagramService = instagramService;
         }
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public InstagramData Get()
         {
-            return new string[] { _foo.GetValues() };
+            return _instagramService.GetImagesForUser(2);
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public InstagramData Get(int userId)
         {
-            return "value";
+            return _instagramService.GetImagesForUser(userId);
         }
 
         // POST api/values

@@ -1,27 +1,7 @@
 ﻿<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span3" id="leftSidebarContainer">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li class="nav-header">Instagram stuff</li>
-                    <li class="active"><a href="#carousel" data-toggle="tab">Instagram carousel</a></li>
-                    <li><a href="#map" data-toggle="tab">Instagram map</a></li>
-                    <li class="nav-header">Example layout</li>
-                    <li><a href="#fluid" data-toggle="tab">Fluid layout</a></li>
-                    <li><a href="#" data-toggle="tab">Link</a></li>
-                </ul>
-            </div>
-            <!--/.well -->
-        </div>
-        <!--/span-->
-        <div class="tab-content">
-            <div class="tab-pane active" id="carousel">@FrontpageHelpers.Carousel()</div>
-            <div class="tab-pane" id="map"></div>
-            <div class="tab-pane" id="fluid">@DemoLayoutHelpers.Layout()</div>
-            <div class="tab-pane" id="settings">...</div>
-        </div>
-
+    <!-- ko foreach: $root.instagramFeed().data -->
+    <div class="span4 imageTile">
+        <a data-bind="attr:{href:link}"><img data-bind="attr: {src: images.standard_resolution.url}" /></a>            
     </div>
-    <!--/row-->
-</div>
-<!--/.fluid-container-->
+        <!-- /ko -->
+    </div>

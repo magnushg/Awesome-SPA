@@ -9,11 +9,11 @@ namespace Awesome_SPA.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IFoo _foo;
+        private readonly IInstagramService _instagramService;
 
-        public HomeController(IFoo foo)
+        public HomeController(IInstagramService instagramService)
         {
-            _foo = foo;
+            _instagramService = instagramService;
         }
 
         public ActionResult Index()

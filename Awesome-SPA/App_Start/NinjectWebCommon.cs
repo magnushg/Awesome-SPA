@@ -59,7 +59,7 @@ namespace Awesome_SPA.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IFoo>().To<Foo>();
+            kernel.Bind<IInstagramService>().To<InstagramService>();
         }        
     }
 }
