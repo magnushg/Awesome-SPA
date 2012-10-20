@@ -4,15 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Awesome_SPA.Services;
 
 namespace Awesome_SPA.Controllers
 {
     public class ValuesController : ApiController
     {
+        private readonly IFoo _foo;
+
+        public ValuesController(IFoo foo)
+        {
+            _foo = foo;
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { _foo.GetValues() };
         }
 
         // GET api/values/5
