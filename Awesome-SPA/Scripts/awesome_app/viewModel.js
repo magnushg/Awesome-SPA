@@ -3,6 +3,11 @@
                 var self = this;
 
                 self.instagramFeed = ko.observable({});
+                self.searchTerm = ko.observable("bouvet");
+                
+                self.searchForTag = function () {
+                    self.update();
+                }
 
                 self.initialize = function() {
                     self.update();
@@ -13,7 +18,7 @@
                         self.setUpdate();
                     };
 
-                    var data = { userId: 24613827 };
+                    var data = { searchTerm: self.searchTerm() };
                     xhr.getInstagramDataForUser(data, success);
                 };
                 self.setUpdate = function() {

@@ -18,9 +18,10 @@
           </a>
           <a class="brand" href="#">Awesome SPA</a>
           <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
-            </p>
+            <form class="navbar-search pull-right">
+                <input data-bind="value: searchTerm" type="text" class="search-query" placeholder="Search">
+                <button data-bind="click: searchForTag"type="submit" class="btn">Search</button>
+            </form>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
