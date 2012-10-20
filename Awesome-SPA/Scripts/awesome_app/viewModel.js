@@ -19,7 +19,7 @@
                 self.setUpdate = function() {
                     setTimeout(function() {
                         self.update();
-                    }, 10000);
+                    }, 30000);
                 };
                 self.initialize();
             };
