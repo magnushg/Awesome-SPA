@@ -4,6 +4,10 @@
 
                 self.instagramFeed = ko.observable({});
                 self.searchTerm = ko.observable("bouvet");
+
+                self.hashtag = ko.computed(function() {
+                    return "#" + self.searchTerm();
+                });
                 
                 self.searchForTag = function () {
                     self.update();

@@ -19,13 +19,13 @@ namespace Awesome_SPA.Controllers
         }
 
         // GET api/values
-        public InstagramData Get()
+        public IEnumerable<InstagramBasicData> Get()
         {
             return _instagramService.GetImagesFromTag("bouvet");
         }
 
         // GET api/values/5
-        public InstagramData Get(string searchTerm)
+        public IEnumerable<InstagramBasicData> Get(string searchTerm)
         {
             return _instagramService.GetImagesFromTag(searchTerm);
         }

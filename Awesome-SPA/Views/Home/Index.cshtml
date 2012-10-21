@@ -1,10 +1,10 @@
 ﻿<div class="container-fluid container-no-padding">
-    <div class="hero-unit">
-        <h1 data-bind="text:searchTerm"></h1>
+    <div class="hero-unit hero-unit-padding">
+        <h1 data-bind="text:hashtag"></h1>
     </div>
-    <!-- ko foreach: $root.instagramFeed().data -->
+    <!-- ko foreach: $root.instagramFeed() -->
     <div class="span3 imageTile">
-        <a data-bind="attr:{href:link}, popover: $data"><img data-bind="attr: {src: images.standard_resolution.url}" /></a>            
+        <a data-bind="attr:{href:link}, popover: $data"><img data-bind="attr: {src: image_standard_res}" /></a>            
     </div>
         <!-- /ko -->
     </div>
