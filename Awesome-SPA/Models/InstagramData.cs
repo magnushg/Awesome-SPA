@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
+
 namespace Awsome_SPA.Models
 {
-    public class InstagramData
+    public class Pagination
     {
-        public Meta meta { get; set; }
-        public Data[] data { get; set; }
+        public string next_max_tag_id { get; set; }
+        public string deprecation_warning { get; set; }
+        public string next_max_id { get; set; }
+        public string next_min_id { get; set; }
+        public string min_tag_id { get; set; }
+        public string next_url { get; set; }
     }
 
     public class Meta
@@ -19,45 +25,21 @@ namespace Awsome_SPA.Models
     public class Location
     {
         public double latitude { get; set; }
-        public string name { get; set; }
         public double longitude { get; set; }
-        public int id { get; set; }
-    }
-
-    public class From
-    {
-        public string username { get; set; }
-        public string profile_picture { get; set; }
-        public string id { get; set; }
-        public string full_name { get; set; }
-    }
-
-    public class CommentsData
-    {
-        public string created_time { get; set; }
-        public string text { get; set; }
-        public From from { get; set; }
-        public string id { get; set; }
+        public string name { get; set; }
+        public int? id { get; set; }
     }
 
     public class Comments
     {
         public int count { get; set; }
-        public CommentsData[] data { get; set; }
-    }
-
-    public class LikesData
-    {
-        public string username { get; set; }
-        public string profile_picture { get; set; }
-        public string id { get; set; }
-        public string full_name { get; set; }
+        public object[] data { get; set; }
     }
 
     public class Likes
     {
         public int count { get; set; }
-        public LikesData[] data { get; set; }
+        public object[] data { get; set; }
     }
 
     public class Low_Resolution
@@ -88,7 +70,7 @@ namespace Awsome_SPA.Models
         public Standard_Resolution standard_resolution { get; set; }
     }
 
-    public class CaptionFrom
+    public class From
     {
         public string username { get; set; }
         public string profile_picture { get; set; }
@@ -100,7 +82,7 @@ namespace Awsome_SPA.Models
     {
         public string created_time { get; set; }
         public string text { get; set; }
-        public CaptionFrom from { get; set; }
+        public From from { get; set; }
         public string id { get; set; }
     }
 
@@ -114,10 +96,10 @@ namespace Awsome_SPA.Models
         public string id { get; set; }
     }
 
-    public class Data
+    public class Datum
     {
         public object attribution { get; set; }
-        public object[] tags { get; set; }
+        public string[] tags { get; set; }
         public string type { get; set; }
         public Location location { get; set; }
         public Comments comments { get; set; }
@@ -130,5 +112,12 @@ namespace Awsome_SPA.Models
         public bool user_has_liked { get; set; }
         public string id { get; set; }
         public User user { get; set; }
+    }
+
+    public class InstagramData
+    {
+        public Pagination pagination { get; set; }
+        public Meta meta { get; set; }
+        public Datum[] data { get; set; }
     }
 }

@@ -10,3 +10,8 @@
 .imageTile {
     margin: 10px;
 }
+
+.searchContainer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -1,6 +1,9 @@
 ﻿<div class="container-fluid">
+    <div class="hero-unit">
+        <h1 data-bind="text:searchTerm"></h1>
+    </div>
     <!-- ko foreach: $root.instagramFeed().data -->
-    <div class="span4 imageTile">
+    <div class="span3 imageTile">
         <a data-bind="attr:{href:link}, popover: $data"><img data-bind="attr: {src: images.standard_resolution.url}" /></a>            
     </div>
         <!-- /ko -->
