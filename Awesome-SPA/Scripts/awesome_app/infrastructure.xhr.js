@@ -10,7 +10,7 @@
             return $.getJSON(url, data, success);
         }
         getInstagramDataForUser = function(data, successCallback) {
-            return getJSON("api/values", data, successCallback);
+            return getJSON("api/images", data, successCallback);
         };
 
         return {
