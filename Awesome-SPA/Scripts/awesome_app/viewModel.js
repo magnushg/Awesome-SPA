@@ -8,15 +8,19 @@
                 self.hashtag = ko.computed(function() {
                     return "#" + self.searchTerm();
                 });
-                
+                self.searchTerm.subscribe(function(newValue) {
+                    log.debug(newValue);
+                });
+
                 self.searchForTag = function () {
                     self.update();
-                }
+                };
 
                 self.initialize = function() {
                     self.update();
                 };
-                self.update = function() {
+
+                self.update = function () {
                     var success = function(d) {
                         self.instagramFeed(d);
                         self.setUpdate();
