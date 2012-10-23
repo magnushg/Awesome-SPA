@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Awesome_SPA.Services;
-using Awsome_SPA.Models;
+using Awesome_SPA.Models;
 
 namespace Awesome_SPA.Controllers
 {

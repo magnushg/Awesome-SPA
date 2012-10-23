@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Awesome_SPA.App_Start;
-using Awsome_SPA.Services;
+using Awesome_SPA.Services;
 using SignalR;
 
 namespace Awesome_SPA

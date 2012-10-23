@@ -5,7 +5,7 @@ using System.Web;
 
 
 
-namespace Awsome_SPA.Models
+namespace Awesome_SPA.Models
 {
     public class Pagination
     {

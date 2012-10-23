@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SignalR;
 
-namespace Awsome_SPA.Services
+namespace Awesome_SPA.Services
 {
     public class UpdateEndpoint : PersistentConnection 
     {

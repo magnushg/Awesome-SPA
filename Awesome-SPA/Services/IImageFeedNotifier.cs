@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using SignalR;
 
-namespace Awsome_SPA.Services
+namespace Awesome_SPA.Services
 {
     public interface IImageFeedNotifier
     {
