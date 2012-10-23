@@ -6,12 +6,12 @@ using SignalR;
 
 namespace Awesome_SPA.Services
 {
-    public interface IImageFeedNotifier
+    public interface INotifier
     {
         void Notify(string message);
     }
 
-    public class ImageFeedNotifier : IImageFeedNotifier
+    public class ImageFeedNotifier : INotifier
     {
         public void Notify(string message)
         {
