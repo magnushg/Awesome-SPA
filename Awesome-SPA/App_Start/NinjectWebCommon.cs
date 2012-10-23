@@ -1,5 +1,6 @@
 using System.Web.Http;
 using Awesome_SPA.Services;
+using Awsome_SPA.Services;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(Awesome_SPA.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Awesome_SPA.App_Start.NinjectWebCommon), "Stop")]
@@ -60,6 +61,7 @@ namespace Awesome_SPA.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IInstagramService>().To<InstagramService>();
+            kernel.Bind<IImageFeedNotifier>().To<ImageFeedNotifier>();
         }        
     }
 }

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Awesome_SPA.App_Start;
+using Awsome_SPA.Services;
+using SignalR;
 
 namespace Awesome_SPA
 {
@@ -21,8 +23,10 @@ namespace Awesome_SPA
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteTable.Routes.MapConnection<UpdateEndpoint>("echo", "echo/{*operation}");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }

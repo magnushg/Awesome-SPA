@@ -1,4 +1,4 @@
-﻿define(['knockout', 'awesome_app/infrastructure.xhr'], function (ko, xhr) {
+﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR'], function (ko, xhr) {
             return function applicationViewModel() {
                 var self = this;
 
@@ -34,6 +34,15 @@
                         self.update();
                     }, 30000);
                 };
+                
+                var connection = $.connection('/echo');
+
+                connection.received(function (data) {
+                    log.debug(data);
+                });
+
+                connection.start();
+
                 self.initialize();
             };
         });
