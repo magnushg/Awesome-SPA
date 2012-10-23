@@ -7,7 +7,8 @@
         "signalR": "jquery.signalR-0.5.3.min"
     },
     shim: {
-        "bootstrap": ["jquery"]
+        "bootstrap": ["jquery"],
+        "signalR" : ["jquery"]
     }
 });
 
