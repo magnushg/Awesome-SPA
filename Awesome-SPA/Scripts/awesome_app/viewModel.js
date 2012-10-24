@@ -9,7 +9,7 @@
                     return "#" + self.searchTerm();
                 });
                 self.searchTerm.subscribe(function(newValue) {
-                    chat.send(JSON.stringify(newValue));
+                    updater.listenToSearch(newValue);
                 });
 
                 self.searchForTag = function () {
@@ -29,11 +29,12 @@
                     xhr.getInstagramDataForUser(data, success);
                 };
                 
-                chat = $.connection.updateHub;
+                var updater = $.connection.updateHub;
 
                 // Declare a function on the chat hub so the server can invoke it
-                chat.add = function (message) {
-                    log.info('someone searched for ' + message);
+                updater.update = function (message) {
+                    var feed = JSON.parse(message);
+                    self.instagramFeed(feed);
                 };
 
                 // Start the connection

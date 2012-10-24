@@ -16,11 +16,8 @@ namespace Awesome_SPA.Services
 
     public class InstagramService : IInstagramService
     {
-        private readonly INotifier _notifier;
-
-        public InstagramService(INotifier notifier)
+        public InstagramService()
         {
-            _notifier = notifier;
         }
 
         public IEnumerable<InstagramBasicData> GetImagesFromTag(string searchTerm)
@@ -38,10 +35,7 @@ namespace Awesome_SPA.Services
                                                                           image_standard_res = d.images.standard_resolution.url,
                                                                           likes = d.likes.count
                                                                       });
-
-            //var serializedData = JsonConvert.SerializeObject(instagramData);
-            //var schedule = new ScheduleJob(() => _notifier.Notify(serializedData));
-            //schedule.Start();
+            
             return instagramData;
         }
     }

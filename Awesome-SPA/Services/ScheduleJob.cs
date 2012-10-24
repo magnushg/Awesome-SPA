@@ -17,11 +17,11 @@ namespace Awesome_SPA.Services
             _job = task;
         }
 
-        public void Start()
+        public void Start(double totalMilliseconds)
         {
             try
             {
-                _timer.Interval = (double)TimeSpan.FromSeconds(30).TotalMilliseconds;
+                _timer.Interval = totalMilliseconds;
 
                 _timer.Elapsed += _timer_Elapsed;
                 _timer.Start();
