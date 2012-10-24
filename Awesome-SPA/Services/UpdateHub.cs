@@ -11,6 +11,7 @@ namespace Awesome_SPA.Services
     public class UpdateHub : Hub, IDisconnect
     {
         private static Dictionary<string, ScheduleJob> _scheduledSearches = new Dictionary<string, ScheduleJob>();
+        private static List<string> _recentSearches = new List<string>(); 
         private object _lock = new object();
 
         public Task ListenToSearch(string searchTerm)
@@ -21,8 +22,9 @@ namespace Awesome_SPA.Services
             lock (_lock)
             {
                 _scheduledSearches.Add(Context.ConnectionId, schedule);
+                _recentSearches.Add(searchTerm);
             }
-            return Clients.updateSearchTerms(searchTerm);
+            return Clients.updateSearchTerms(_recentSearches.Distinct().Select(s => s).ToArray());
         }
 
         private void StopExistingSchedule()

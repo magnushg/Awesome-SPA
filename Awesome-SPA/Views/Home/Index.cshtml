@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid container-no-padding">
     <div class="row-fluid">
-        <p class="span12 space big-hashtag" data-bind="text:hashtag"></p>
+        <p class="span12 space" data-bind="text:hashtag"></p>
     </div>
     <!-- ko foreach: $root.instagramFeed() -->
     <div class="span3 imageTile">
@@ -8,10 +8,13 @@
     </div>
     <!-- /ko -->
     <div class="row-fluid">
-        <div class="span12">
-        <!-- ko foreach: $root.recentSearches -->
-            <a data-bind="attr:{href:$parent.hashtag}, text:$data"></a> 
-            <!-- /ko -->
+        <div class="span12 space">
+            <div class="well">
+            <span>Recent searches: </span>
+            <!-- ko foreach: $root.recentSearches -->
+            <span class="badge badge-info" data-bind="text:$data"></span>
+                <!-- /ko -->
+            </div>
         </div>
     </div>
     </div>

@@ -34,11 +34,19 @@
     margin-left: 20px !important;
 }
 
-.big-hashtag {
+.row-fluid p {
     font-family: "Giorgio", sans-serif;
-    font-size: 7em;
+    font-size: 10em;
     font-weight: bold;
     line-height: 50px;
     text-transform: uppercase;
+    margin: 30px auto 40px auto;
+    width: 980px;
+}
 
+@media (max-width: 979px) {
+    .row-fluid p {
+        font-size: 55px;
+        margin: 10px 0 15px 0;
+    }
 }

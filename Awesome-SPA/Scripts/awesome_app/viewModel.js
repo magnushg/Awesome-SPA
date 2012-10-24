@@ -39,11 +39,13 @@
                 };
 
                 updater.updateSearchTerms = function(message) {
-                    self.recentSearches.push(message);
+                    self.recentSearches(message);
                 };
 
                 // Start the connection
-                $.connection.hub.start();
+                $.connection.hub.start(function () {
+                    updater.listenToSearch("bouvet");
+                });
 
                 self.initialize();
             };
