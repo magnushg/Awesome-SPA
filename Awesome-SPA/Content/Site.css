@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 60px;
     padding-bottom: 40px;
+    overflow-x: hidden;
 }
 
 #leftSidebarContainer {
@@ -34,19 +35,18 @@
     margin-left: 20px !important;
 }
 
-.row-fluid p {
+.big-hashtag {
     font-family: "Giorgio", sans-serif;
     font-size: 10em;
     font-weight: bold;
     line-height: 50px;
     text-transform: uppercase;
-    margin: 30px auto 40px auto;
-    width: 980px;
+    margin: 30px 0 40px 0;
 }
 
 @media (max-width: 979px) {
-    .row-fluid p {
+    .big-hashtag {
         font-size: 55px;
-        margin: 10px 0 15px 0;
+        margin: 10px 0 10px 0;
     }
 }
