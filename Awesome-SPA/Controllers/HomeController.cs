@@ -18,6 +18,7 @@ namespace Awesome_SPA.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Awesome Single Page Application";
             return View();
         }
     }

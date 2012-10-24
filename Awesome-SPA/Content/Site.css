@@ -37,7 +37,7 @@
 
 .big-hashtag {
     font-family: "Giorgio", sans-serif;
-    font-size: 10em;
+    font-size: 8em;
     font-weight: bold;
     line-height: 50px;
     text-transform: uppercase;
@@ -46,7 +46,7 @@
 
 @media (max-width: 979px) {
     .big-hashtag {
-        font-size: 55px;
+        font-size: 35px;
         margin: 10px 0 10px 0;
     }
 }
