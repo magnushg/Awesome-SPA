@@ -23,7 +23,7 @@ namespace Awesome_SPA
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteTable.Routes.MapConnection<UpdateEndpoint>("echo", "echo/{*operation}");
+            //RouteTable.Routes.MapConnection<UpdateEndpoint>("echo", "echo/{*operation}");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             

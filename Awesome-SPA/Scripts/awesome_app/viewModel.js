@@ -1,4 +1,4 @@
-﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR'], function (ko, xhr) {
+﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR', 'noext!signalr/hubs'], function (ko, xhr) {
             return function applicationViewModel() {
                 var self = this;
 
@@ -9,7 +9,7 @@
                     return "#" + self.searchTerm();
                 });
                 self.searchTerm.subscribe(function(newValue) {
-                    log.debug(newValue);
+                    chat.send(JSON.stringify(newValue));
                 });
 
                 self.searchForTag = function () {
@@ -23,25 +23,21 @@
                 self.update = function () {
                     var success = function(d) {
                         self.instagramFeed(d);
-                        self.setUpdate();
                     };
 
                     var data = { searchTerm: self.searchTerm() };
                     xhr.getInstagramDataForUser(data, success);
                 };
-                self.setUpdate = function() {
-                    setTimeout(function() {
-                        self.update();
-                    }, 30000);
-                };
                 
-                var connection = $.connection('/echo');
+                chat = $.connection.updateHub;
 
-                connection.received(function (data) {
-                    log.debug(data);
-                });
+                // Declare a function on the chat hub so the server can invoke it
+                chat.add = function (message) {
+                    log.info('someone searched for ' + message);
+                };
 
-                connection.start();
+                // Start the connection
+                $.connection.hub.start();
 
                 self.initialize();
             };

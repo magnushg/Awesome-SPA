@@ -39,56 +39,11 @@ namespace Awesome_SPA.Services
                                                                           likes = d.likes.count
                                                                       });
 
-            var serializedData = JsonConvert.SerializeObject(instagramData);
-            var schedule = new ScheduleJob(() => _notifier.Notify(serializedData));
-            schedule.Start();
+            //var serializedData = JsonConvert.SerializeObject(instagramData);
+            //var schedule = new ScheduleJob(() => _notifier.Notify(serializedData));
+            //schedule.Start();
             return instagramData;
         }
-    }
-
-    public class ScheduleJob
-    {
-        private readonly Timer _timer;
-        private Action _job;
-
-        public ScheduleJob(Action task)
-        {
-            _timer = new Timer();
-            _job = task;
-        }
-
-        public void Start()
-        {
-            try
-            {
-                _timer.Interval = (double)TimeSpan.FromSeconds(30).TotalMilliseconds;
-
-                _timer.Elapsed += _timer_Elapsed;
-                _timer.Start();
-                IsRunning = true;
-            }
-            catch (Exception e)
-            {
-                IsRunning = false;
-                throw e;
-            }
-        }
-        public void Stop()
-        {
-            if (_timer != null)
-                _timer.Stop();
-
-            IsRunning = false;
-        }
-        private void _timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            _timer.Enabled = false;
-
-            _job(); //perform the job
-
-            _timer.Enabled = true;
-        }
-        public bool IsRunning { get; set; }
     }
 
     public class InstagramBasicData
