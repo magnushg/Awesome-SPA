@@ -8,12 +8,12 @@ using SignalR.Hubs;
 
 namespace Awesome_SPA.Services
 {
-    public class UpdateHub : Hub
+    public class UpdateHub : Hub, IDisconnect
     {
         private static Dictionary<string, ScheduleJob> _scheduledSearches = new Dictionary<string, ScheduleJob>();
         private object _lock = new object();
 
-        public void ListenToSearch(string searchTerm)
+        public Task ListenToSearch(string searchTerm)
         {
             StopExistingSchedule();
             var schedule = new ScheduleJob(() => ScheduledNotification(searchTerm, Caller));
@@ -22,6 +22,7 @@ namespace Awesome_SPA.Services
             {
                 _scheduledSearches.Add(Context.ConnectionId, schedule);
             }
+            return Clients.updateSearchTerms(searchTerm);
         }
 
         private void StopExistingSchedule()
@@ -42,6 +43,12 @@ namespace Awesome_SPA.Services
             IInstagramService instagramService = new InstagramService();
             var serializedData = JsonConvert.SerializeObject(instagramService.GetImagesFromTag(searchTerm));
             caller.update(serializedData);
+        }
+
+        public Task Disconnect()
+        {
+            StopExistingSchedule();
+            return Clients.leave(Context.ConnectionId, DateTime.Now.ToString());
         }
     }
 }

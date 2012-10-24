@@ -36,9 +36,9 @@
 
 .big-hashtag {
     font-family: "Giorgio", sans-serif;
-    font-size: 55px;
+    font-size: 7em;
     font-weight: bold;
     line-height: 50px;
-    text-transform: lowercase;
+    text-transform: uppercase;
 
 }

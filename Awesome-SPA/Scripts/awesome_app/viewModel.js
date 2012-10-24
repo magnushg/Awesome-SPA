@@ -4,6 +4,7 @@
 
                 self.instagramFeed = ko.observable({});
                 self.searchTerm = ko.observable("bouvet");
+                self.recentSearches = ko.observableArray();
 
                 self.hashtag = ko.computed(function() {
                     return "#" + self.searchTerm();
@@ -35,6 +36,10 @@
                 updater.update = function (message) {
                     var feed = JSON.parse(message);
                     self.instagramFeed(feed);
+                };
+
+                updater.updateSearchTerms = function(message) {
+                    self.recentSearches.push(message);
                 };
 
                 // Start the connection
