@@ -24,7 +24,7 @@ namespace Awesome_SPA.Services
                 _scheduledSearches.Add(Context.ConnectionId, schedule);
                 _recentSearches.Add(searchTerm);
             }
-            return Clients.updateSearchTerms(_recentSearches.Distinct().Select(s => s).ToArray());
+            return Clients.updateSearchTerms(_recentSearches.Distinct().Take(20).Select(s => s).ToArray());
         }
 
         private void StopExistingSchedule()
