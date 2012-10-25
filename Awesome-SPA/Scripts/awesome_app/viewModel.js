@@ -1,4 +1,4 @@
-﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR', 'noext!signalr/hubs'], function (ko, xhr) {
+﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'awesome_app/infrastructure.updateHub'], function (ko, xhr, updater) {
             return function applicationViewModel() {
                 var self = this;
 
@@ -34,24 +34,6 @@
                     var data = { searchTerm: self.searchTerm() };
                     xhr.getInstagramDataForUser(data, success);
                 };
-                
-                var updater = $.connection.updateHub;
-
-                // Declare a function on the chat hub so the server can invoke it
-                updater.update = function (message) {
-                    var feed = JSON.parse(message);
-                    self.instagramFeed(feed);
-                };
-
-                updater.updateSearchTerms = function(message) {
-                    self.recentSearches(message);
-                };
-
-                // Start the connection
-                $.connection.hub.start(function () {
-                    updater.listenToSearch("bouvet");
-                });
-
                 self.initialize();
             };
         });
