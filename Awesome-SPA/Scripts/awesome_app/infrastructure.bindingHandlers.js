@@ -8,7 +8,7 @@
             $(element).popover({ trigger: 'hover', placement: 'bottom', html: true, title: '<b>' + username + '<b>', content: '<p>'+ caption + '</p><p><b>Likes : ' + likes + '</b></p>'  });
         },
         update: function (element, valueAccessor, allBindingsAccessor) {
-            // Leave as before
+            
         }
     };
 })

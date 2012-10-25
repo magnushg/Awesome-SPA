@@ -7,10 +7,10 @@
         'domReady!'], function ($, ko, applicationViewModel) {
             var run = function () {
                 ko.applyBindings(new applicationViewModel());
-                log.debug("Application started...")
+                log.debug("Application started...");
             };
-            
+
             return {
                 run: run
-            }
+            };
         });

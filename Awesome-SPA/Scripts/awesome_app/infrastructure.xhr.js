@@ -13,7 +13,7 @@
             return getJSON("api/images", data, successCallback);
         };
 
-        return {
-            getInstagramDataForUser: getInstagramDataForUser
-        }
+    return {
+        getInstagramDataForUser: getInstagramDataForUser
+    };
 });

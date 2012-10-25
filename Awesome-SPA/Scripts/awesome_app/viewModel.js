@@ -11,6 +11,7 @@
                 });
                 self.searchTerm.subscribe(function(newValue) {
                     updater.listenToSearch(newValue);
+                    log.info(newValue);
                 });
 
                 self.searchForTag = function () {
