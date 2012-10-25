@@ -12,7 +12,7 @@
             <div class="well">
             <span>Recent searches: </span>
             <!-- ko foreach: $root.recentSearches -->
-            <span class="badge badge-info" data-bind="text:$data"></span>
+            <span class="badge badge-info" data-bind="text:$data, click: $parent.searchFor.bind($data)"></span>
                 <!-- /ko -->
             </div>
         </div>

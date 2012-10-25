@@ -17,6 +17,11 @@
                     self.update();
                 };
 
+                self.searchFor = function(searchTerm) {
+                    self.searchTerm(searchTerm);
+                    self.update();
+                };
+
                 self.initialize = function() {
                     self.update();
                 };
