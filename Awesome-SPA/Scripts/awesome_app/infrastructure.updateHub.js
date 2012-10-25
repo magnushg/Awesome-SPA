@@ -16,8 +16,8 @@
 	$.connection.hub.start(function () {
 		updater.listenToSearch("bouvet");
 	});
-    
-	return {
-		listenToSearch: updater.listenToSearch
-	}
+
+    return {
+        listenToSearch: updater.listenToSearch
+    };
 })
