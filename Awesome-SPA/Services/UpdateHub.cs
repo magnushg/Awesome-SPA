@@ -27,6 +27,13 @@ namespace Awesome_SPA.Services
             return Clients.updateSearchTerms(_recentSearches.Distinct().Take(20).Select(s => s).ToArray());
         }
 
+        private void ScheduledNotification(string searchTerm, dynamic caller)
+        {
+            IInstagramService instagramService = new InstagramService();
+            var serializedData = JsonConvert.SerializeObject(instagramService.GetImagesFromTag(searchTerm));
+            caller.update(serializedData);
+        }
+
         private void StopExistingSchedule()
         {
            if(_scheduledSearches.ContainsKey(Context.ConnectionId))
@@ -38,13 +45,6 @@ namespace Awesome_SPA.Services
                    _scheduledSearches.Remove(Context.ConnectionId);
                }
            }
-        }
-
-        private void ScheduledNotification(string searchTerm, dynamic caller)
-        {
-            IInstagramService instagramService = new InstagramService();
-            var serializedData = JsonConvert.SerializeObject(instagramService.GetImagesFromTag(searchTerm));
-            caller.update(serializedData);
         }
 
         public Task Disconnect()
