@@ -1,23 +1,26 @@
 ﻿define(['signalR', 'noext!signalr/hubs'], function () {
     var self = this;
-	var updater = $.connection.updateHub;
+    self.hub = $.connection.updateHub;
+    self.feed = { };
 
-	// Declare a function on the chat hub so the server can invoke it
-	updater.update = function (message) {
-		var feed = JSON.parse(message);
-		self.instagramFeed(feed);
-	};
+        // Declare a function on the chat hub so the server can invoke it
+    hub.update = function(message) {
+        var feed = JSON.parse(message);
+        self.feed(feed);
+    };
 
-	updater.updateSearchTerms = function (message) {
-		self.recentSearches(message);
-	};
+    hub.updateSearchTerms = function(message) {
+        self.recentSearches(message);
+    };
 
-	// Start the connection
-	$.connection.hub.start(function () {
-		updater.listenToSearch("bouvet");
-	});
+    self.initialize = function(feed) {
+        // Start the connection
+        self.feed = feed;
+        $.connection.hub.start();
+    };
 
     return {
-        listenToSearch: updater.listenToSearch
+        listenToSearch: self.hub.listenToSearch,
+        initialize: self.initialize
     };
 })

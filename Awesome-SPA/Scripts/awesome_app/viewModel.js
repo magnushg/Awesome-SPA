@@ -1,38 +1,21 @@
-﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR', 'noext!signalr/hubs'], function (ko, xhr, updater) {
+﻿define(['knockout', 'awesome_app/infrastructure.xhr', 'signalR', 'noext!signalr/hubs'], function (ko, xhr) {
     var ApplicationViewModel = function () {
         var self = this;
-
+        
         self.instagramFeed = ko.observable({});
         self.searchTerm = ko.observable("bouvet");
         self.recentSearches = ko.observableArray();
+        self.hashtag = ko.computed(self.getHashTag, self);
 
-        self.hashtag = ko.computed(function () {
-            return "#" + self.searchTerm();
-        });
         self.searchTerm.subscribe(function (newValue) {
             self.updater.listenToSearch(newValue);
             log.info(newValue);
         });
-
-        self.searchForTag = function () {
-            self.update();
-        };
-
-        self.searchFor = function (searchTerm) {
-            self.searchTerm(searchTerm);
-            self.update();
+        self.updateData = function(feed) {
+            self.instagramFeed(feed);
         };
         
-        self.update = function () {
-            var success = function (d) {
-                self.instagramFeed(d);
-            };
-
-            var data = { searchTerm: self.searchTerm() };
-            xhr.getInstagramDataForUser(data, success);
-        };
-
-        self.setupHub = function () {
+       self.setupHub = function () {
             self.updater = $.connection.updateHub;
             // Declare a function on the chat hub so the server can invoke it
             self.updater.update = function (message) {
@@ -49,13 +32,26 @@
                 self.updater.listenToSearch("bouvet");
             });
         };
-        
         this.initialize();
     };
     ko.utils.extend(ApplicationViewModel.prototype, {
+        getHashTag: function () {
+            return "#" + this.searchTerm();
+        },
         initialize: function () {
             this.update();
             this.setupHub();
+        },
+        update: function () {
+            var data = { searchTerm: this.searchTerm() };
+            xhr.getInstagramDataForUser(data, this.updateData);
+        },
+        searchForTag: function () {
+            this.update();
+        },
+        searchFor: function (searchTerm) {
+            this.searchTerm(searchTerm);
+            this.update();
         }
     });
     return ApplicationViewModel;
