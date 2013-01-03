@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Awesome_SPA.App_Start;
 using Awesome_SPA.Services;
+using Raven.Client.Document;
 using SignalR;
 
 namespace Awesome_SPA
@@ -26,7 +27,6 @@ namespace Awesome_SPA
             //RouteTable.Routes.MapConnection<UpdateEndpoint>("echo", "echo/{*operation}");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
         }
     }
 }

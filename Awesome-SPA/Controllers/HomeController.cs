@@ -19,6 +19,8 @@ namespace Awesome_SPA.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Awesome Single Page Application";
+            var searchRepos = new SearchRepository();
+            var result = searchRepos.GetAll();
             return View();
         }
     }
