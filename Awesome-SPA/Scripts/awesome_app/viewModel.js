@@ -14,6 +14,11 @@
         self.updateData = function(feed) {
             self.instagramFeed(feed);
         };
+
+        self.searchFor = function(search) {
+            self.searchTerm(search);
+            self.update();
+        };
         
        self.setupHub = function () {
             self.updater = $.connection.updateHub;
@@ -47,10 +52,6 @@
             xhr.getInstagramDataForUser(data, this.updateData);
         },
         searchForTag: function () {
-            this.update();
-        },
-        searchFor: function (searchTerm) {
-            this.searchTerm(searchTerm);
             this.update();
         }
     });

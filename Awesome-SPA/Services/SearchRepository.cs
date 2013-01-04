@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Raven.Client;
 using Raven.Client.Document;
 
@@ -50,7 +51,6 @@ namespace Awesome_SPA.Services
     public class Search
     {
         public string Term { get; set; }
-        public int TimesSearched { get; set; }
-        public int Frequency { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

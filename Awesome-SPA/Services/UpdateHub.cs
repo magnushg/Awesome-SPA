@@ -17,14 +17,16 @@ namespace Awesome_SPA.Services
         public Task ListenToSearch(string searchTerm)
         {
             StopExistingSchedule();
+            var searchRepository = new SearchRepository();
             var schedule = new ScheduleJob(() => ScheduledNotification(searchTerm, Caller));
             schedule.Start(TimeSpan.FromSeconds(20).TotalMilliseconds);
             lock (_lock)
             {
                 _scheduledSearches.Add(Context.ConnectionId, schedule);
-                _recentSearches.Add(searchTerm);
+                searchRepository.SaveSearch(new Search{Term = searchTerm, TimeStamp = DateTime.Now});
+                //_recentSearches.Add(searchTerm);
             }
-            return Clients.updateSearchTerms(_recentSearches.Distinct().Take(20).Select(s => s).ToArray());
+            return Clients.updateSearchTerms(searchRepository.GetAll().Select(s => s.Term).Distinct().Take(20));
         }
 
         private void ScheduledNotification(string searchTerm, dynamic caller)

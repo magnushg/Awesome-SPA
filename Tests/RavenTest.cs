@@ -21,7 +21,6 @@ namespace Awesome_SPA.Tests
             var search = new Search
                              {
                                  Term = "Bouvet",
-                                 TimesSearched = 1
                              };
             searchRepository.SaveSearch(search);
         }
@@ -48,8 +47,7 @@ namespace Awesome_SPA.Tests
                                        },
                                    new Search
                                        {
-                                           Term = "cat",
-                                           TimesSearched = 5
+                                           Term = "cat"
                                        }
 
                                };
